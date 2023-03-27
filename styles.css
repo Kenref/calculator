@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    height: 98vh;
+    
+
+
+    
+}
+
+.calcContainer {
+    border:1px solid red;
+    
+    width: 400px;
+    height: 600px;
+
+}
+
+.outputBox {
+    border:solid blue 1px;
+    height:100px;
+}
+
+.buttons {
+    border: solid red 1px;
+    height: 500px;
+}
