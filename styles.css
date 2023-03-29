@@ -19,7 +19,7 @@ body {
 
 }
 
-.outputBox {
+#outputBox {
     height:100px;
     font-size: 60px;
     display: flex;
