@@ -27,7 +27,8 @@ numberButton.forEach(button => {
         if (operatorClicked) {
           b += e.target.classList[1];
           outputBox.textContent += e.target.classList[1];
-        } else {
+        } 
+        else {
             a += e.target.classList[1]
             outputBox.textContent += e.target.classList[1];
         }
@@ -38,18 +39,40 @@ operatorButton.forEach(button => {
     button.addEventListener("click", e => {
         if (b === "") {
             middle = e.target.classList[1];
-            outputBox.textContent += middle;
-        } else {
+            //operators cannot be clicked more than once
+            if (outputBox.textContent.charAt(outputBox.textContent.length - 1) === middle) {
+                outputBox.textContent = outputBox.textContent.slice(0, -1) + middle;
+            }
+            else if (
+                //operators cannot be clicked more than once but also cannot be bypassed by clicking different ones
+                outputBox.textContent.charAt(outputBox.textContent.length - 1) == "+" ||
+                outputBox.textContent.charAt(outputBox.textContent.length - 1) == "-" ||
+                outputBox.textContent.charAt(outputBox.textContent.length - 1) == "x" ||
+                outputBox.textContent.charAt(outputBox.textContent.length - 1) == "÷") {
+                outputBox.textContent = outputBox.textContent.slice(0, -1) + middle;                    
+            }
+            else {
+                outputBox.textContent += middle;
+            }
+        } 
+        else {
             runningTotal = operate(Number(a), middle, Number(b));
             outputBox.textContent = runningTotal;
             a = runningTotal;
             b = "";
             middle = e.target.classList[1];
-            outputBox.textContent += middle;
+            if (outputBox.textContent.charAt(outputBox.textContent.length - 1) === middle) {
+                outputBox.textContent = outputBox.textContent.slice(0, -1) + middle;
+            } 
+            else {
+                outputBox.textContent += middle;
+            }
         }
         operatorClicked = true;
     });
 });
+
+  
   
 
 
@@ -73,9 +96,8 @@ equalsButton.addEventListener("click", () => {
     equals()
   });
 
-// find a way to append first into the runningTotal when middle is activated
-// need to add another e listenrs
-// need to bake conditionals into getnumber
+// numbers needed to be rounded
+// display a snarky error message when the user tries to divide by 0
 
 
 
