@@ -1,27 +1,28 @@
 function operate(a, operator, b) {
     if (operator === "+") {
-        return a + b
+        return a + b;
     }
     else if (operator === "-") {
-        return a - b
+        return a - b;
     }
     else if (operator === "x") {
-        return a * b
+        return a * b;
     }
     else if (operator === "÷") {
-        return a / b
+        return a / b;
     }
 }
 
 const outputBox = document.getElementById("outputBox");
 const numberButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
-const equalsButton = document.getElementById("equals")
-const clearButton = document.getElementById("clear")
-const decimalButton = document.getElementById("decimal")
+const equalsButton = document.getElementById("equals");
+const clearButton = document.getElementById("clear");
+const decimalButton = document.getElementById("decimal");
 
-let a = "", middle = "", b = "", runningTotal = 0
-let operatorClicked = false
+let a = "", middle = "", b = "", runningTotal = 0;
+let operatorClicked = false;
+let decimalActivated = false;
 
 
 numberButton.forEach(button => {
@@ -31,7 +32,7 @@ numberButton.forEach(button => {
           outputBox.textContent += e.target.classList[1];
         } 
         else {
-            a += e.target.classList[1]
+            a += e.target.classList[1];
             outputBox.textContent += e.target.classList[1];
         }
     });
@@ -39,12 +40,19 @@ numberButton.forEach(button => {
 
 function decimal() {
     if (operatorClicked) {
-        b += ".";
-        outputBox.textContent += ".";
+        if (decimalActivated == false) {
+            b += ".";
+            outputBox.textContent += ".";
+            decimalActivated = true;
+        }
     } 
     else {
-        a += "."
-        outputBox.textContent += ".";
+        if (decimalActivated == false) {
+            a += ".";
+            outputBox.textContent += ".";
+            decimalActivated = true;
+        }
+
     }
 }
 
@@ -52,15 +60,16 @@ function decimal() {
 
 function activateDecimal() {
     decimalButton.addEventListener("click", () => {
-    decimal()
+        decimal();
     }, {once:true})
+    decimalActivated = false;
 }
-activateDecimal()
+activateDecimal();
 
 operatorButton.forEach(button => {
     button.addEventListener("click", e => {
         if (b === "") {
-            activateDecimal()
+            activateDecimal();
 
 
             middle = e.target.classList[1];
@@ -103,11 +112,13 @@ operatorButton.forEach(button => {
 
 
 clearButton.addEventListener("click", e => {
-    a = ""
-    middle = ""
-    b = ""
-    operatorClicked = false
-    outputBox.textContent = ""
+    a = "";
+    middle = "";
+    b = "";
+    operatorClicked = false;
+    decimalActivated = false;
+    activateDecimal()
+    outputBox.textContent = "";
 })
 
 
@@ -116,19 +127,17 @@ function equals() {
     if (middle == "÷" && b == 0) {
         alert("Excuse me you cannot divide by 0!")
     }
-    outputBox.textContent = +parseFloat(runningTotal).toFixed(9)
-    // outputBox.textContent = runningTotal.toFixed(9)
-    a = runningTotal
-    b = ""
+
+    outputBox.textContent = +parseFloat(runningTotal).toFixed(5)
+
+    a = runningTotal;
+    b = "";
 }
 
 equalsButton.addEventListener("click", () => {
     equals()
-    // activateDecimal()
   });
 
-// numbers needed to be rounded
-// add a . button to allow users to input decimals but make sure they can only use one decimal at a time (disable decimal button if there is already one in the display)
 // make the calculator look nice
 // add backspace functionality
 // add keyboard support
