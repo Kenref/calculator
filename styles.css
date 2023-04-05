@@ -4,8 +4,8 @@ body {
     justify-content: center;
     align-items: center; 
     height: 98vh;
-    
-
+    background-image: linear-gradient(rgba(79, 91, 102, 0.5) 50%, rgba(192, 197, 206, 0.5));
+/* make the background transparent right from the color picker */
 
     
 }
@@ -16,7 +16,7 @@ body {
     
     width: 400px;
     height: 610px;
-
+    /* opacity: 0.5; */
 }
 
 #outputBox {

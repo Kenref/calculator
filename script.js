@@ -13,14 +13,16 @@ function operate(a, operator, b) {
     }
 }
 
-let outputBox = document.getElementById("outputBox");
+const outputBox = document.getElementById("outputBox");
 const numberButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
 const equalsButton = document.getElementById("equals")
 const clearButton = document.getElementById("clear")
+const decimalButton = document.getElementById("decimal")
 
 let a = "", middle = "", b = "", runningTotal = 0
 let operatorClicked = false
+
 
 numberButton.forEach(button => {
     button.addEventListener("click", e => {
@@ -35,9 +37,32 @@ numberButton.forEach(button => {
     });
 });
 
+function decimal() {
+    if (operatorClicked) {
+        b += ".";
+        outputBox.textContent += ".";
+    } 
+    else {
+        a += "."
+        outputBox.textContent += ".";
+    }
+}
+
+
+
+function activateDecimal() {
+    decimalButton.addEventListener("click", () => {
+    decimal()
+    }, {once:true})
+}
+activateDecimal()
+
 operatorButton.forEach(button => {
     button.addEventListener("click", e => {
         if (b === "") {
+            activateDecimal()
+
+
             middle = e.target.classList[1];
             //operators cannot be clicked more than once
             if (outputBox.textContent.charAt(outputBox.textContent.length - 1) === middle) {
@@ -56,6 +81,7 @@ operatorButton.forEach(button => {
             }
         } 
         else {
+            activateDecimal()
             runningTotal = operate(Number(a), middle, Number(b));
             outputBox.textContent = runningTotal;
             a = runningTotal;
@@ -72,7 +98,7 @@ operatorButton.forEach(button => {
     });
 });
 
-  
+
   
 
 
@@ -87,20 +113,22 @@ clearButton.addEventListener("click", e => {
 
 function equals() {
     runningTotal =  operate(Number(a), middle, Number(b))
-    outputBox.textContent = runningTotal
+    if (middle == "÷" && b == 0) {
+        alert("Excuse me you cannot divide by 0!")
+    }
+    outputBox.textContent = +parseFloat(runningTotal).toFixed(9)
+    // outputBox.textContent = runningTotal.toFixed(9)
     a = runningTotal
     b = ""
 }
 
 equalsButton.addEventListener("click", () => {
     equals()
+    // activateDecimal()
   });
 
 // numbers needed to be rounded
-// display a snarky error message when the user tries to divide by 0
-
-
-
-
-
-// add functionality to the "other" class buttons
+// add a . button to allow users to input decimals but make sure they can only use one decimal at a time (disable decimal button if there is already one in the display)
+// make the calculator look nice
+// add backspace functionality
+// add keyboard support
