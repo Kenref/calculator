@@ -53,33 +53,50 @@ function addNumber(e) {
     }
 }
 
-function decimal() {
-    if (operatorClicked) {
-        if (decimalActivated == false) {
-            b += ".";
-            outputBox.textContent += ".";
-            decimalActivated = true;
+function decimal(e) {
+    if (e.type === "click") {
+        if (operatorClicked) {
+            if (decimalActivated == false) {
+                b += ".";
+                outputBox.textContent += ".";
+                decimalActivated = true;
+            }
+        } 
+        else {
+            if (decimalActivated == false) {
+                a += ".";
+                outputBox.textContent += ".";
+                decimalActivated = true;
+            }
         }
-    } 
-    else {
-        if (decimalActivated == false) {
-            a += ".";
-            outputBox.textContent += ".";
-            decimalActivated = true;
+    }
+    else if (e.type === "keydown" && e.key === ".") {
+        if (operatorClicked) {
+            if (decimalActivated == false) {
+                b += ".";
+                outputBox.textContent += ".";
+                decimalActivated = true;
+            }
+        } 
+        else {
+            if (decimalActivated == false) {
+                a += ".";
+                outputBox.textContent += ".";
+                decimalActivated = true;
+            }
         }
-
     }
 }
 
-
-
 function activateDecimal() {
-    decimalButton.addEventListener("click", () => {
-        decimal();
-    }, {once:true})
+    decimalButton.addEventListener("click", decimal)
+    window.addEventListener("keydown", decimal)
     decimalActivated = false;
 }
+
 activateDecimal();
+
+
 
 operatorButton.forEach(button => {
     button.addEventListener("click", e => {
