@@ -18,7 +18,8 @@ const outputBox = document.getElementById("outputBox");
 const numberButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
 const equalsButton = document.getElementById("equals");
-const clearButton = document.getElementById("clear");
+const clearAllButton = document.getElementById("clearAll");
+const clearButton = document.getElementById("clear")
 const decimalButton = document.getElementById("decimal");
 
 let a = "", middle = "", b = "", runningTotal = 0;
@@ -182,8 +183,8 @@ function addOperator(e) {
 }
 
 
-function clear(e) {
-    if (e.type === "click" || (e.key === "Backspace" && e.type === "keydown")) {
+function clearAll(e) {
+    if (e.type === "click") {
         a = "";
         middle = "";
         b = "";
@@ -191,6 +192,26 @@ function clear(e) {
         decimalActivated = false;
         activateDecimal()
         outputBox.textContent = "";
+    }
+}
+
+
+
+
+
+
+function clear(e) {
+    if (e.type === "click" || (e.key === "Backspace" && e.type === "keydown")) {
+        if (operatorClicked) {
+            outputBox.textContent = outputBox.textContent.slice(0, -1)
+            b = b.slice(0, -1)
+            console.log(`b = ${b}`)
+        }
+        else {
+            outputBox.textContent = outputBox.textContent.slice(0, -1)
+            a = a.slice(0, -1)
+            console.log(`a = ${a}`)
+        }
     }
 }
 
@@ -215,7 +236,7 @@ function equals(e) {
 
 
 function activateEquals() {
-    equalsButton.addEventListener("click,", equals)
+    equalsButton.addEventListener("click", equals)
     window.addEventListener("keydown", equals)
 }
 
@@ -234,4 +255,5 @@ operatorButton.forEach(button => {
 activateDecimal()
 activateEquals()
 activateClear()
+clearAllButton.addEventListener("click", clearAll)
 
