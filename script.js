@@ -25,11 +25,6 @@ let operatorClicked = false;
 let decimalActivated = false;
 
 
-numberButton.forEach(number => {
-    number.addEventListener("click", addNumber)
-    window.addEventListener("keydown", addNumber)
-})
-
 function addNumber(e) {
     if (e.type === "click") {
         if (operatorClicked) {
@@ -94,14 +89,6 @@ function activateDecimal() {
     decimalActivated = false;
 }
 
-activateDecimal();
-
-
-
-operatorButton.forEach(button => {
-    button.addEventListener("click", addOperator)
-    window.addEventListener("keydown", addOperator)
-})
         
 function addOperator(e) {
     if (e.type === "click") {
@@ -139,11 +126,14 @@ function addOperator(e) {
         operatorClicked = true;
     }
 
-    else if (e.type === "keydown" && (e.key === "+" || e.key === "-" || e.key === "x" || e.key === "/")){
+    else if (e.type === "keydown" && (e.key === "+" || e.key === "-" || e.key === "x" || e.key === "/" || e.key === "*")){
         if (b === "") {
             activateDecimal();
             if (e.key == "/") {
                 middle = "÷"
+            }
+            else if (e.key == "x" || e.key == "*") {
+                middle = "x"
             }
             else {
                 middle = e.key;
@@ -171,6 +161,9 @@ function addOperator(e) {
             if (e.key == "/") {
                 middle = "÷"
             }
+            else if (e.key == "x" || e.key == "*") {
+                middle = "x"
+            }
             else {
                 middle = e.key;
             }
@@ -184,8 +177,6 @@ function addOperator(e) {
         operatorClicked = true;
     }
 }
-
-
 
   
 
@@ -201,22 +192,69 @@ clearButton.addEventListener("click", e => {
 })
 
 
-function equals() {
-    runningTotal =  operate(Number(a), middle, Number(b))
-    if (middle == "÷" && b == 0) {
-        alert("Excuse me you cannot divide by 0!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function equals(e) {
+    if (e.type === "click" || (e.key === "=" && e.type === "keydown") || (e.key === "Enter" && e.type === "keydown")) {   
+        runningTotal =  operate(Number(a), middle, Number(b))
+        if (middle == "÷" && b == 0) {
+            alert("Excuse me you cannot divide by 0!")
+        }
+        outputBox.textContent = +parseFloat(runningTotal).toFixed(5)
+        a = runningTotal;
+        b = "";
     }
-
-    outputBox.textContent = +parseFloat(runningTotal).toFixed(5)
-
-    a = runningTotal;
-    b = "";
 }
 
-equalsButton.addEventListener("click", () => {
-    equals()
-  });
+function activateEquals() {
+    equalsButton.addEventListener("click,", equals)
+    window.addEventListener("keydown", equals)
+}
+
+
+
+
+
+
+
+
+
+numberButton.forEach(number => {
+    number.addEventListener("click", addNumber)
+    window.addEventListener("keydown", addNumber)
+})
+
+operatorButton.forEach(button => {
+    button.addEventListener("click", addOperator)
+    window.addEventListener("keydown", addOperator)
+})
+
+activateDecimal()
+activateEquals()
+
 
 // make the calculator look nice
 // add backspace functionality
 // add keyboard support
+
+
+// function activateDecimal() {
+//     decimalButton.addEventListener("click", decimal)
+//     window.addEventListener("keydown", decimal)
+//     decimalActivated = false;
+// }
+
+// activateDecimal();
+
