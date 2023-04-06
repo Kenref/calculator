@@ -99,18 +99,19 @@ activateDecimal();
 
 
 operatorButton.forEach(button => {
-    button.addEventListener("click", e => {
+    button.addEventListener("click", addOperator)
+    window.addEventListener("keydown", addOperator)
+})
+        
+function addOperator(e) {
+    if (e.type === "click") {
         if (b === "") {
             activateDecimal();
-
-
             middle = e.target.classList[1];
-            //operators cannot be clicked more than once
             if (outputBox.textContent.charAt(outputBox.textContent.length - 1) === middle) {
                 outputBox.textContent = outputBox.textContent.slice(0, -1) + middle;
             }
             else if (
-                //operators cannot be clicked more than once but also cannot be bypassed by clicking different ones
                 outputBox.textContent.charAt(outputBox.textContent.length - 1) == "+" ||
                 outputBox.textContent.charAt(outputBox.textContent.length - 1) == "-" ||
                 outputBox.textContent.charAt(outputBox.textContent.length - 1) == "x" ||
@@ -136,8 +137,54 @@ operatorButton.forEach(button => {
             }
         }
         operatorClicked = true;
-    });
-});
+    }
+
+    else if (e.type === "keydown" && (e.key === "+" || e.key === "-" || e.key === "x" || e.key === "/")){
+        if (b === "") {
+            activateDecimal();
+            if (e.key == "/") {
+                middle = "÷"
+            }
+            else {
+                middle = e.key;
+            }
+            if (outputBox.textContent.charAt(outputBox.textContent.length - 1) === middle) {
+                outputBox.textContent = outputBox.textContent.slice(0, -1) + middle;
+            }
+            else if (
+                outputBox.textContent.charAt(outputBox.textContent.length - 1) == "+" ||
+                outputBox.textContent.charAt(outputBox.textContent.length - 1) == "-" ||
+                outputBox.textContent.charAt(outputBox.textContent.length - 1) == "x" ||
+                outputBox.textContent.charAt(outputBox.textContent.length - 1) == "÷") {
+                outputBox.textContent = outputBox.textContent.slice(0, -1) + middle;                    
+            }
+            else {
+                outputBox.textContent += middle;
+            }
+        } 
+        else {
+            activateDecimal()
+            runningTotal = operate(Number(a), middle, Number(b));
+            outputBox.textContent = runningTotal;
+            a = runningTotal;
+            b = "";
+            if (e.key == "/") {
+                middle = "÷"
+            }
+            else {
+                middle = e.key;
+            }
+            if (outputBox.textContent.charAt(outputBox.textContent.length - 1) === middle) {
+                outputBox.textContent = outputBox.textContent.slice(0, -1) + middle;
+            } 
+            else {
+                outputBox.textContent += middle;
+            }
+        }
+        operatorClicked = true;
+    }
+}
+
 
 
   
