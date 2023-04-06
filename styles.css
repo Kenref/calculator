@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: center; 
     height: 98vh;
-    background-image: linear-gradient(rgba(79, 91, 102, 0.5) 50%, rgba(192, 197, 206, 0.5));
+    background-image: linear-gradient(rgba(34, 128, 215, 0.45) 20%, rgba(255, 179, 0, 0.4) 70%, rgba(210, 26, 26, 0.7));
 /* make the background transparent right from the color picker */
 
     
@@ -25,7 +25,7 @@ body {
     display: flex;
     align-items: end;
     justify-content: end;
-    background-color: blue;
+    background-color: rgba(238, 210, 31, 0.501);
     color: white;
     padding-right: 10px;
     padding-left: 10px;
