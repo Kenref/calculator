@@ -25,18 +25,33 @@ let operatorClicked = false;
 let decimalActivated = false;
 
 
-numberButton.forEach(button => {
-    button.addEventListener("click", e => {
+numberButton.forEach(number => {
+    number.addEventListener("click", addNumber)
+    window.addEventListener("keydown", addNumber)
+})
+
+function addNumber(e) {
+    if (e.type === "click") {
         if (operatorClicked) {
-          b += e.target.classList[1];
-          outputBox.textContent += e.target.classList[1];
+            b += e.target.classList[1];
+            outputBox.textContent += e.target.classList[1];
         } 
         else {
             a += e.target.classList[1];
             outputBox.textContent += e.target.classList[1];
         }
-    });
-});
+    }
+    else if (e.type === "keydown" && e.key >= 0 && e.key <= 9) {
+        if (operatorClicked) {
+            b += e.key;
+            outputBox.textContent += e.key;
+        } 
+        else {
+            a += e.key;
+            outputBox.textContent += e.key;
+        }
+    }
+}
 
 function decimal() {
     if (operatorClicked) {
