@@ -184,7 +184,7 @@ function addOperator(e) {
 
 
 function clearAll(e) {
-    if (e.type === "click") {
+    if (e.type === "click" || (e.key === "Escape" && e.type === "keydown")) {
         a = "";
         middle = "";
         b = "";
@@ -195,7 +195,10 @@ function clearAll(e) {
     }
 }
 
-
+function activateClearAll() {
+    clearAllButton.addEventListener("click", clearAll)
+    window.addEventListener("keydown", clearAll)
+}
 
 
 
@@ -205,12 +208,10 @@ function clear(e) {
         if (operatorClicked) {
             outputBox.textContent = outputBox.textContent.slice(0, -1)
             b = b.slice(0, -1)
-            console.log(`b = ${b}`)
         }
         else {
             outputBox.textContent = outputBox.textContent.slice(0, -1)
             a = a.slice(0, -1)
-            console.log(`a = ${a}`)
         }
     }
 }
@@ -240,7 +241,6 @@ function activateEquals() {
     window.addEventListener("keydown", equals)
 }
 
-
 numberButton.forEach(number => {
     number.addEventListener("click", addNumber)
     window.addEventListener("keydown", addNumber)
@@ -255,5 +255,4 @@ operatorButton.forEach(button => {
 activateDecimal()
 activateEquals()
 activateClear()
-clearAllButton.addEventListener("click", clearAll)
-
+activateClearAll()
