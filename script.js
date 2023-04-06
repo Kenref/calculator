@@ -13,6 +13,7 @@ function operate(a, operator, b) {
     }
 }
 
+
 const outputBox = document.getElementById("outputBox");
 const numberButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
@@ -48,6 +49,7 @@ function addNumber(e) {
     }
 }
 
+
 function decimal(e) {
     if (e.type === "click") {
         if (operatorClicked) {
@@ -82,6 +84,7 @@ function decimal(e) {
         }
     }
 }
+
 
 function activateDecimal() {
     decimalButton.addEventListener("click", decimal)
@@ -178,7 +181,6 @@ function addOperator(e) {
     }
 }
 
-  
 
 function clear(e) {
     if (e.type === "click" || (e.key === "Backspace" && e.type === "keydown")) {
@@ -192,21 +194,11 @@ function clear(e) {
     }
 }
 
+
 function activateClear() {
     clearButton.addEventListener("click", clear)
     window.addEventListener("keydown", clear)
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 function equals(e) {
@@ -221,17 +213,11 @@ function equals(e) {
     }
 }
 
+
 function activateEquals() {
     equalsButton.addEventListener("click,", equals)
     window.addEventListener("keydown", equals)
 }
-
-
-
-
-
-
-
 
 
 numberButton.forEach(number => {
@@ -244,20 +230,8 @@ operatorButton.forEach(button => {
     window.addEventListener("keydown", addOperator)
 })
 
+
 activateDecimal()
 activateEquals()
 activateClear()
-
-
-// make the calculator look nice
-
-
-
-// function activateDecimal() {
-//     decimalButton.addEventListener("click", decimal)
-//     window.addEventListener("keydown", decimal)
-//     decimalActivated = false;
-// }
-
-// activateDecimal();
 
