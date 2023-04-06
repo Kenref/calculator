@@ -180,19 +180,22 @@ function addOperator(e) {
 
   
 
+function clear(e) {
+    if (e.type === "click" || (e.key === "Backspace" && e.type === "keydown")) {
+        a = "";
+        middle = "";
+        b = "";
+        operatorClicked = false;
+        decimalActivated = false;
+        activateDecimal()
+        outputBox.textContent = "";
+    }
+}
 
-clearButton.addEventListener("click", e => {
-    a = "";
-    middle = "";
-    b = "";
-    operatorClicked = false;
-    decimalActivated = false;
-    activateDecimal()
-    outputBox.textContent = "";
-})
-
-
-
+function activateClear() {
+    clearButton.addEventListener("click", clear)
+    window.addEventListener("keydown", clear)
+}
 
 
 
@@ -243,11 +246,11 @@ operatorButton.forEach(button => {
 
 activateDecimal()
 activateEquals()
+activateClear()
 
 
 // make the calculator look nice
-// add backspace functionality
-// add keyboard support
+
 
 
 // function activateDecimal() {
