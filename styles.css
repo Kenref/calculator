@@ -11,13 +11,13 @@ body {
 }
 
 .calcContainer {
-    border: solid rgba(104, 34, 224, 0.355) 10px;
-    border-radius: 10px;
+    border: #f3d05280 solid 70px;
+    background-color: #f3d05280 ;
+    border-radius: 70px;
     
     width: 400px;
     height: 610px;
     opacity: 0.7;
-    
 }
 
 #outputBox {
@@ -26,13 +26,13 @@ body {
     display: flex;
     align-items: end;
     justify-content: end;
-    background-color: rgba(238, 210, 31, 0.501);
+    background-color: rgba(46, 182, 67, 0.501);
     color: white;
     padding-right: 10px;
     padding-left: 10px;
     border-bottom: solid black 10px;
     word-break: break-all;
-
+    border-radius: 20px;
 }
 
 .buttons {
@@ -40,8 +40,6 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);    
     grid-template-rows: repeat(5, 1fr);
-
-
 }
 
 #clearAll {
@@ -56,5 +54,17 @@ body {
 
 button {
     font-size: 35px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 5px 7px 4px currentColor;
+    margin: 7px;
 }
 
+button:hover {
+    background-color: rgba(215, 71, 71, 0.1);
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: 5px 7px 1px black;
+}
