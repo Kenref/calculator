@@ -4,20 +4,17 @@ body {
     justify-content: center;
     align-items: center; 
     height: 98vh;
-    background-image: linear-gradient(rgba(34, 128, 215, 0.45) 20%, rgba(255, 179, 0, 0.4) 70%, rgba(210, 26, 26, 0.7));
-/* make the background transparent right from the color picker */
-
-    
+    background: linear-gradient(to right, #1d1e22 0%, #1d1e22 50%, #393f4d 50%, #393f4d 100%);
 }
 
 .calcContainer {
-    border: #f3d05280 solid 70px;
-    background-color: #f3d05280 ;
     border-radius: 70px;
-    
     width: 400px;
     height: 610px;
-    opacity: 0.7;
+    opacity: 0.9;
+    border: #d4d4dc solid 40px;
+    background-color: #d4d4dc ;
+    box-shadow: 30px 30px 30px currentColor;
 }
 
 #outputBox {
@@ -26,13 +23,14 @@ body {
     display: flex;
     align-items: end;
     justify-content: end;
-    background-color: rgba(46, 182, 67, 0.501);
     color: white;
     padding-right: 10px;
     padding-left: 10px;
-    border-bottom: solid black 10px;
     word-break: break-all;
-    border-radius: 20px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    background-color: rgba(46, 182, 67);   
+    box-shadow: 8px 9px 5px black; 
 }
 
 .buttons {
@@ -40,6 +38,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);    
     grid-template-rows: repeat(5, 1fr);
+    color: #feda6a;
 }
 
 #clearAll {
@@ -58,13 +57,14 @@ button {
     cursor: pointer;
     box-shadow: 5px 7px 4px currentColor;
     margin: 7px;
+    background-color: #feda6a;
 }
 
 button:hover {
-    background-color: rgba(215, 71, 71, 0.1);
+    background-color: rgb(114, 114, 98, 0.5);
 }
 
 button:active {
     transform: translateY(4px);
-    box-shadow: 5px 7px 1px black;
+    box-shadow: 3px 5px 1px black;
 }
