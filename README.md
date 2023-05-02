@@ -8,14 +8,12 @@
     <li>Plenty of safeguards to prevent abuse, e.g. using "+" twice, or decimal point multiple times.</li>
     <li>Option to play again</li>
 </ul>
-<br>
 <h2>Languages:</h2>
 <ul>
     <li>HTML</li>
     <li>CSS</li>
     <li>JS</li>
 </ul>
-<br>
 <h2>Challenges</h2>
 <ul>
     <li>Trouble with return values from event listeners, unexpected behaviours with using loops with event listeners</li>
