@@ -5,8 +5,7 @@
     <li>Calculator with basic functionality</li>
     <li>Keyboard functionality, additionally "backspace" for clear and "esc" for all clear</li>
     <li>Able do multiple calculations at once</li>
-    <li>Plenty of safeguards to prevent abuse, e.g. using "+" twice, or decimal point multiple times. </li>
-    
+    <li>Plenty of safeguards to prevent abuse, e.g. using "+" twice, or decimal point multiple times.</li>
     <li>Option to play again</li>
 </ul>
 <br>
