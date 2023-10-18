@@ -2,25 +2,19 @@
 
 <h2>About</h2>
 <ul>
-    <li>Calculator with basic functionality</li>
+    <li>Calculator made using plain JS</li>
     <li>Keyboard functionality, additionally "backspace" for clear and "esc" for all clear</li>
     <li>Able do multiple calculations at once</li>
     <li>Plenty of safeguards to prevent abuse, e.g. using "+" twice, or decimal point multiple times.</li>
-    <li>Option to play again</li>
 </ul>
 <h2>Languages:</h2>
-<ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JS</li>
-</ul>
+<img src="https://skillicons.dev/icons?i=html,css,js" alt="HTML, CSS, JS, icons">
 <h2>Challenges</h2>
 <ul>
-    <li>Trouble with return values from event listeners, unexpected behaviours with using loops with event listeners</li>
+    <li>There were difficulties with return values from event listeners and unexpected behaviours using loops with event listeners</li>
     <li>Adding classes to the dom using JS</li>
     <li>Implementing safeguards required extensive testing</li>
 </ul>
-<h2>Important takeaway</h2>
-<ul>
-    <li>Keep event listeners outside of functions when possible as my experience with the project showed that there was less trouble with interacting with events.</li>
-</ul>
+<h2>Screenshot:</h2>
+
+![Calculator](https://github.com/Kenref/calculator/assets/107287396/8b799ddd-066a-4429-b5ab-1a18ef2ef124)
