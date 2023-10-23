@@ -1,5 +1,5 @@
 <h1>Calculator Project for The Odin Project </h1>
-
+https://kenref.github.io/calculator/
 <h2>About</h2>
 <ul>
     <li>Calculator made using plain JS</li>
