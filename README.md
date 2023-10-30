@@ -5,7 +5,7 @@ https://kenref.github.io/calculator/
     <li>Calculator made using plain JS</li>
     <li>Keyboard functionality, additionally "backspace" for clear and "esc" for all clear</li>
     <li>Able do multiple calculations at once</li>
-    <li>Plenty of safeguards to prevent abuse, e.g. using "+" twice, or decimal point multiple times.</li>
+    <li>Plenty of safeguards to prevent user error, e.g. using "+" twice, or decimal point multiple times.</li>
 </ul>
 <h2>Languages:</h2>
 <img src="https://skillicons.dev/icons?i=html,css,js" alt="HTML, CSS, JS, icons">
