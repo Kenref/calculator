@@ -1,4 +1,4 @@
-<h1>Calculator Project for The Odin Project </h1>
+<h1>Working Calculator</h1>
 https://kenref.github.io/calculator/
 <h2>About</h2>
 <ul>
